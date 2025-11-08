@@ -1,3 +1,3 @@
 public enum Genero {
-    FORRO, FUNK, BREGA, POP, ROCK
+    FORRO, FUNK, BREGA
 }
