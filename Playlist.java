@@ -3,13 +3,11 @@ import java.util.List;
 
 public class Playlist {
     private String nome;
-    private String usuario;
     private List<Midia> midias;
 
-    public Playlist(String nome, String usuario) {
+    public Playlist(String nome) {
         this.nome = nome;
         this.midias = new ArrayList<>();
-        this.usuario = usuario;
     }
 
     public void adicionarMidia(Midia m) {
@@ -20,18 +18,27 @@ public class Playlist {
         midias.remove(m);
     }
 
-    public int calcularDuracaoTotal() {
-        int total = 0;
+    public List<Midia> getMidias() {
+        return midias;
+    }
+
+    public void listarMidias() {
+        System.out.println("\nPlaylist: " + nome);
+        if (midias.isEmpty()) {
+            System.out.println("Nenhuma mídia na playlist.");
+        } else {
+            for (Midia m : midias) {
+                System.out.println(m);
+            }
+            System.out.println("Duração total: " + calcularDuracaoTotal() + " min");
+        }
+    }
+
+    public double calcularDuracaoTotal() {
+        double total = 0;
         for (Midia m : midias) {
             total += m.getDuracao();
         }
         return total;
-    }
-    public void exibirPlaylist() {
-        System.out.println("PlayList: " + nome);
-        for (Midia m : midias) {
-            System.out.println("--> " + m);
-        }
-        System.out.println("Duração Total: " + calcularDuracaoTotal()/60 + " minutos");
     }
 }
